@@ -35,7 +35,7 @@ class RegisterScreen extends StatelessWidget {
                       icon: const Icon( Icons.arrow_back_rounded, size: 40, color: Colors.white )
                     ),
                     const Spacer(flex: 1),
-                    Text('Crear cuenta', style: textStyles.titleLarge?.copyWith(color: Colors.white )),
+                    Text('Create user', style: textStyles.titleLarge?.copyWith(color: Colors.white )),
                     const Spacer(flex: 2),
                   ],
                 ),
@@ -43,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox( height: 50 ),
     
                 Container(
-                  height: size.height - 260, // 80 los dos sizebox y 100 el ícono
+                  height: size.height - 220, // 80 los dos sizebox y 100 el ícono
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: scaffoldBackgroundColor,
@@ -69,44 +69,44 @@ class _RegisterForm extends StatelessWidget {
     final textStyles = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
         children: [
-          const SizedBox( height: 50 ),
-          Text('Nueva cuenta', style: textStyles.titleMedium ),
-          const SizedBox( height: 50 ),
-
-          const CustomTextFormField(
-            label: 'Nombre completo',
-            keyboardType: TextInputType.emailAddress,
-          ),
+          const SizedBox( height: 40 ),
+          Text('New account', style: textStyles.titleMedium ),
           const SizedBox( height: 30 ),
 
           const CustomTextFormField(
-            label: 'Correo',
+            label: 'Full Name',
             keyboardType: TextInputType.emailAddress,
           ),
-          const SizedBox( height: 30 ),
+          const SizedBox( height: 15 ),
 
           const CustomTextFormField(
-            label: 'Contraseña',
+            label: 'Email',
+            keyboardType: TextInputType.emailAddress,
+          ),
+          const SizedBox( height: 15 ),
+
+          const CustomTextFormField(
+            label: 'Password',
             obscureText: true,
           ),
     
-          const SizedBox( height: 30 ),
+          const SizedBox( height: 15 ),
 
           const CustomTextFormField(
-            label: 'Repita la contraseña',
+            label: 'Confirm Password',
             obscureText: true,
           ),
     
-          const SizedBox( height: 30 ),
+          const SizedBox( height: 20 ),
 
           SizedBox(
             width: double.infinity,
             height: 60,
             child: CustomFilledButton(
-              text: 'Crear',
+              text: 'Create',
               buttonColor: Colors.black,
               onPressed: (){
 
@@ -114,12 +114,12 @@ class _RegisterForm extends StatelessWidget {
             )
           ),
 
-          const Spacer( flex: 2 ),
+          const Spacer( flex: 1 ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('¿Ya tienes cuenta?'),
+              const Text('Already have an account?'),
               TextButton(
                 onPressed: (){
                   if ( context.canPop()){
@@ -128,7 +128,7 @@ class _RegisterForm extends StatelessWidget {
                   context.go('/login');
                   
                 }, 
-                child: const Text('Ingresa aquí')
+                child: const Text('Login here')
               )
             ],
           ),

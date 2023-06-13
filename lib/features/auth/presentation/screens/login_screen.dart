@@ -57,7 +57,7 @@ class _LoginForm extends StatelessWidget {
     final textStyles = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
         children: [
           const SizedBox( height: 50 ),
@@ -65,13 +65,13 @@ class _LoginForm extends StatelessWidget {
           const SizedBox( height: 90 ),
 
           const CustomTextFormField(
-            label: 'Correo',
+            label: 'Email',
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox( height: 30 ),
 
           const CustomTextFormField(
-            label: 'Contraseña',
+            label: 'Password',
             obscureText: true,
           ),
     
@@ -81,7 +81,7 @@ class _LoginForm extends StatelessWidget {
             width: double.infinity,
             height: 60,
             child: CustomFilledButton(
-              text: 'Ingresar',
+              text: 'Login',
               buttonColor: Colors.black,
               onPressed: (){
 
@@ -94,10 +94,10 @@ class _LoginForm extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('¿No tienes cuenta?'),
+              const Text('Dont have an account?'),
               TextButton(
                 onPressed: ()=> context.push('/register'), 
-                child: const Text('Crea una aquí')
+                child: const Text('Create account')
               )
             ],
           ),
