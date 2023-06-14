@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:teslo_shop/features/auth/presentation/providers/providers.dart';
 import 'package:teslo_shop/features/shared/shared.dart';
 
 
@@ -60,12 +62,13 @@ class RegisterScreen extends StatelessWidget {
   }
 }
 
-class _RegisterForm extends StatelessWidget {
+class _RegisterForm extends ConsumerWidget {
   const _RegisterForm();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
+    final registerForm = ref.watch(registerFormProvider);
     final textStyles = Theme.of(context).textTheme;
 
     return Padding(
@@ -76,28 +79,40 @@ class _RegisterForm extends StatelessWidget {
           Text('New account', style: textStyles.titleMedium ),
           const SizedBox( height: 30 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Full Name',
             keyboardType: TextInputType.emailAddress,
+            onChanged: (value) => ref.read(registerFormProvider.notifier).onFullNameChanged(value),
+            errorMessage: registerForm.isFormPosted ?
+              registerForm.fullName.errorMessage : null,
           ),
           const SizedBox( height: 15 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Email',
             keyboardType: TextInputType.emailAddress,
+            onChanged: (value) => ref.read(registerFormProvider.notifier).onEmailChanged(value),
+            errorMessage: registerForm.isFormPosted ?
+              registerForm.email.errorMessage : null,
           ),
           const SizedBox( height: 15 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Password',
             obscureText: true,
+            onChanged: (value) => ref.read(registerFormProvider.notifier).onPasswordChanged(value),
+            errorMessage: registerForm.isFormPosted ?
+              registerForm.password.errorMessage : null,
           ),
     
           const SizedBox( height: 15 ),
 
-          const CustomTextFormField(
+          CustomTextFormField(
             label: 'Confirm Password',
             obscureText: true,
+            onChanged: (value) => ref.read(registerFormProvider.notifier).onConfirmedpasswordChanged(value),
+            errorMessage: registerForm.isFormPosted ?
+              registerForm.confirmedpassword.errorMessage : null,
           ),
     
           const SizedBox( height: 20 ),
@@ -109,7 +124,7 @@ class _RegisterForm extends StatelessWidget {
               text: 'Create',
               buttonColor: Colors.black,
               onPressed: (){
-
+                ref.read(registerFormProvider.notifier).onFormSubmit();
               },
             )
           ),
