@@ -21,7 +21,7 @@ class AuthDataSourceImpl extends AuthDataSource {
   }
 
   @override
-  Future<User> login(String email, String password) async{
+  Future<User> login(String email, String password) async {
     try {
       final response = await dio.post('/auth/login', data: {
         'email': email,
@@ -30,8 +30,13 @@ class AuthDataSourceImpl extends AuthDataSource {
 
       final user = UserMapper.userJsonToEntity(response.data);
       return user;
+
+    } on DioException catch (e) {
+      if ( e.response?.statusCode == 401 ) throw CustomError(e.response?.data['message'] ?? 'not valid credentials' );
+      if ( e.type == DioExceptionType.connectionTimeout) throw CustomError('check your internet connection');
+      throw Exception();
     } catch (e) {
-      throw WrongCredentials();
+      throw Exception();
     }
   }
 

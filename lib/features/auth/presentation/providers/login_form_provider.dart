@@ -21,6 +21,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
   LoginFormNotifier({
     required this.loginUserCallback
   }): super(LoginFormState());
+
   onEmailChange(String value){
     final newEmail = Email.dirty(value);
     state = state.copywith(
@@ -36,16 +37,21 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
       isValid: Formz.validate([newPassword, state.email])
     );
   }
+
   onFormSubmit() async {
+
     _touchEveryField();
+
     if(!state.isValid) return;
 
     await loginUserCallback(state.email.value, state.password.value);
-    print(state);
   }
+
   _touchEveryField() {
+
     final email = Email.dirty(state.email.value);
     final password = Password.dirty(state.password.value);
+    
     state = state.copywith(
       isFormPosted: true,
       email: email,
@@ -91,12 +97,12 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
   @override
   String toString() {
     return '''
-      LoginFormState:
-      isPosting: $isPosting 
-      isFormPosted: $isFormPosted 
-      isValid: $isValid 
-      email: $email 
-      password: $password 
-  ''';
+  LoginFormState:
+    isPosting: $isPosting 
+    isFormPosted: $isFormPosted 
+    isValid: $isValid 
+    email: $email 
+    password: $password 
+''';
   }
 }

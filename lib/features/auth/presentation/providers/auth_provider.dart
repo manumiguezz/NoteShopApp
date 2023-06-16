@@ -18,6 +18,7 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
 class AuthNotifier extends StateNotifier<AuthState> {
 
   final AuthRepository authRepository;
+  
   AuthNotifier({
     required this.authRepository
   }): super(AuthState());
@@ -28,8 +29,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
     try {
       final user = await authRepository.login(email, password);
       _setLoggedUser(user);
-    } on WrongCredentials {
-      logout('wrong credentials');
+    } on CustomError catch (e) {
+      logout(e.message);
     } catch (e) {
       logout('error not controled');
     }
