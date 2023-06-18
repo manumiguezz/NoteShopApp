@@ -34,7 +34,7 @@ class Confirmedpassword extends FormzInput<String, ConfirmedpasswordError> {
 
     if ( value.isEmpty || value.trim().isEmpty ) return ConfirmedpasswordError.empty;
     if ( value.length < 6 ) return ConfirmedpasswordError.length;
-    if ( password != confirmedpassword ) return ConfirmedpasswordError.format;
+    if ( password.value != confirmedpassword.value ) return ConfirmedpasswordError.format;
 
     return null;
   }

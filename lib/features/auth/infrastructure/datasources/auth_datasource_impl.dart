@@ -16,7 +16,6 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<User> checkAuthStatus(String token) {
-    // TODO: implement checkAuthStatus
     throw UnimplementedError();
   }
 
@@ -42,7 +41,6 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<User> register(String email, String password, String fullName) {
-    // TODO: implement register
     throw UnimplementedError();
   }
 
