@@ -22,7 +22,7 @@ class ProductsScreen extends StatelessWidget {
       ),
       body: const _ProductsView(),
       floatingActionButton: FloatingActionButton.extended(
-        label: const Text('Nuevo producto'),
+        label: const Text('new'),
         icon: const Icon( Icons.add ),
         onPressed: () {},
       ),
@@ -36,6 +36,6 @@ class _ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Eres genial!'));
+    return const Center(child: Text('default'));
   }
 }
