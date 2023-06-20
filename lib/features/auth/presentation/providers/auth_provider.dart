@@ -50,6 +50,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = state.copywith(
       user: user,
       authStatus: AuthStatus.autheticated,
+      errorMessage: '',
     );
   }
 

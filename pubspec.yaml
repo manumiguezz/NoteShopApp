@@ -17,6 +17,7 @@ dependencies:
   go_router: ^8.0.2
   google_fonts: ^5.0.0
   path_provider: ^2.0.15
+  shared_preferences: ^2.1.2
 
 dev_dependencies:
   flutter_lints: ^2.0.1
