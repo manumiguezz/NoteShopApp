@@ -4,23 +4,29 @@ import 'package:teslo_shop/features/auth/domain/domain.dart';
 import 'package:teslo_shop/features/auth/domain/repositories/auth_repository.dart';
 import 'package:teslo_shop/features/auth/infrastructure/errors/auth_errors.dart';
 import 'package:teslo_shop/features/auth/infrastructure/repositories/auth_repository_impl.dart';
+import 'package:teslo_shop/features/shared/infrastructure/services/key_value_sotrage_impl.dart';
+import 'package:teslo_shop/features/shared/infrastructure/services/key_value_storage.dart';
 
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
 
   final authRepository = AuthRepositoryImpl();
+  final keyValueStorageService = KeyValueStorageServiceImpl();
 
   return AuthNotifier(
-    authRepository: authRepository
+    authRepository: authRepository,
+    keyValueStorageService: keyValueStorageService,
   ); 
 });
 
 class AuthNotifier extends StateNotifier<AuthState> {
 
   final AuthRepository authRepository;
-  
+  final KeyValueStorageService keyValueStorageService;
+
   AuthNotifier({
-    required this.authRepository
+    required this.authRepository,
+    required this.keyValueStorageService,
   }): super(AuthState());
 
   Future<void> loginUser(String email, String password) async {
@@ -46,7 +52,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
     
   }
 
-  void _setLoggedUser(User user) {
+  void _setLoggedUser(User user) async {
+    await keyValueStorageService.setKeyValue('token', user.token);
+
     state = state.copywith(
       user: user,
       authStatus: AuthStatus.autheticated,
@@ -55,6 +63,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   Future<void> logout([String? errorMessage]) async{
+    await keyValueStorageService.removeKey('token');
+
     state = state.copywith(
       authStatus: AuthStatus.notAuthenticated,
       user: null,
