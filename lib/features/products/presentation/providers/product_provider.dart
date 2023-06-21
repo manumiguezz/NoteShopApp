@@ -31,7 +31,7 @@ class ProductNotifier extends StateNotifier<ProductState> {
       );
       
     } catch (e) {
-      print(e);
+      throw Exception();
     }
   }
 }
