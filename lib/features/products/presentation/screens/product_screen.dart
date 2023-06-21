@@ -17,6 +17,7 @@ class ProductScreen extends ConsumerWidget {
     final productState = ref.watch(productProvider(productId));
 
     return Scaffold(
+
       appBar: AppBar(
         title: const Text('edit'),
         actions: [
@@ -26,13 +27,16 @@ class ProductScreen extends ConsumerWidget {
           )
         ],
       ),
+
       body: productState.isLoading
       ? const FullscreenLoader()
       : _ProductView(product: productState.product!),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.save_as_outlined),
       ),
+
     );
   }
 }
@@ -58,8 +62,12 @@ class _ProductView extends StatelessWidget {
           ),
     
           const SizedBox( height: 10 ),
-          Center(child: Text( product.title, style: textStyles.titleSmall )),
-          const SizedBox( height: 10 ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Center(child: Text( product.title, style: textStyles.titleSmall, textAlign: TextAlign.center, )),
+          ),
+          const SizedBox( height: 20 ),
           _ProductInformation( product: product ),
           
         ],
@@ -75,51 +83,49 @@ class _ProductInformation extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref ) {
 
-    
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Generales'),
+          const Text('General Information'),
           const SizedBox(height: 15 ),
           CustomProductField( 
             isTopField: true,
-            label: 'Nombre',
+            label: 'name',
             initialValue: product.title,
           ),
           CustomProductField( 
-            isTopField: true,
             label: 'Slug',
             initialValue: product.slug,
           ),
           CustomProductField( 
             isBottomField: true,
-            label: 'Precio',
+            label: 'Price',
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             initialValue: product.price.toString(),
           ),
 
-          const SizedBox(height: 15 ),
-          const Text('Extras'),
+          const SizedBox(height: 20 ),
+          const Text('Extra'),
+          const SizedBox(height: 13),
 
           _SizeSelector(selectedSizes: product.sizes ),
-          const SizedBox(height: 5 ),
+          const SizedBox(height: 10 ),
           _GenderSelector( selectedGender: product.gender ),
           
 
-          const SizedBox(height: 15 ),
+          const SizedBox(height: 30 ),
           CustomProductField( 
             isTopField: true,
-            label: 'Existencias',
+            label: 'Stock',
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
             initialValue: product.stock.toString(),
           ),
 
           CustomProductField( 
             maxLines: 6,
-            label: 'Descripción',
+            label: 'Description',
             keyboardType: TextInputType.multiline,
             initialValue: product.description,
           ),
@@ -127,7 +133,7 @@ class _ProductInformation extends ConsumerWidget {
           CustomProductField( 
             isBottomField: true,
             maxLines: 2,
-            label: 'Tags (Separados por coma)',
+            label: 'Tags (Separated by ",")',
             keyboardType: TextInputType.multiline,
             initialValue: product.tags.join(', '),
           ),
@@ -151,6 +157,7 @@ class _SizeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SegmentedButton(
+      emptySelectionAllowed: true,
       showSelectedIcon: false,
       segments: sizes.map((size) {
         return ButtonSegment(
