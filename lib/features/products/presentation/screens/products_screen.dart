@@ -44,7 +44,7 @@ class _ProductsView extends ConsumerStatefulWidget {
   _ProductsViewState createState() => _ProductsViewState();
 }
 
-class _ProductsViewState extends ConsumerState<_ProductsView> {
+class _ProductsViewState extends ConsumerState {
 
   final ScrollController scrollController = ScrollController();
 
@@ -53,7 +53,7 @@ class _ProductsViewState extends ConsumerState<_ProductsView> {
     super.initState();
 
     scrollController.addListener(() {
-      if( (scrollController.position.pixels + 400) >= scrollController.position.maxScrollExtent){
+      if((scrollController.position.pixels + 400) >= scrollController.position.maxScrollExtent){
         ref.read(productsProvider.notifier).loadNextPage();
       } 
     });

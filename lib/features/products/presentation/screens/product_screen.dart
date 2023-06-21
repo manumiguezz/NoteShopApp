@@ -6,10 +6,7 @@ class ProductScreen extends ConsumerStatefulWidget {
 
   final String productId;
 
-  const ProductScreen({
-    required this.productId,
-    super.key
-  });
+  const ProductScreen({ super.key, required this.productId });
 
   @override
   ProductScreenState createState() => ProductScreenState();
