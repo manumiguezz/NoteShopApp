@@ -41,14 +41,16 @@ class ProductScreen extends ConsumerWidget {
   }
 }
 
-class _ProductView extends StatelessWidget {
+class _ProductView extends ConsumerWidget {
 
   final Product product;
 
   const _ProductView({required this.product});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final productForm = ref.watch(productFormProvider(product));
 
     final textStyles = Theme.of(context).textTheme;
 
@@ -58,17 +60,17 @@ class _ProductView extends StatelessWidget {
           SizedBox(
             height: 250,
             width: 600,
-            child: _ImageGallery(images: product.images ),
+            child: _ImageGallery(images: productForm.images ),
           ),
     
           const SizedBox( height: 10 ),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Center(child: Text( product.title, style: textStyles.titleSmall, textAlign: TextAlign.center, )),
+            child: Center(child: Text( productForm.title.value, style: textStyles.titleSmall, textAlign: TextAlign.center, )),
           ),
           const SizedBox( height: 20 ),
-          _ProductInformation( product: product ),
+          _ProductInformation(product: product),
           
         ],
     );
@@ -78,10 +80,13 @@ class _ProductView extends StatelessWidget {
 
 class _ProductInformation extends ConsumerWidget {
   final Product product;
+
   const _ProductInformation({required this.product});
 
   @override
   Widget build(BuildContext context, WidgetRef ref ) {
+
+    final productForm = ref.watch(productFormProvider(product));
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -93,7 +98,8 @@ class _ProductInformation extends ConsumerWidget {
           CustomProductField( 
             isTopField: true,
             label: 'name',
-            initialValue: product.title,
+            initialValue: productForm.title.value,
+            onChanged: (value) => ref.read(productFormProvider(product).notifier).onTitleChanged(value),
           ),
           CustomProductField( 
             label: 'Slug',
