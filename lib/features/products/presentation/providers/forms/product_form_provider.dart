@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:teslo_shop/features/products/presentation/providers/product_respository_provider.dart';
 
 import '../../../../shared/shared.dart';
 
@@ -11,10 +12,11 @@ import '../../../../shared/shared.dart';
 final productFormProvider = StateNotifierProvider.autoDispose.family<ProductFormNotifier, ProductFormState, Product>
   ((ref, product) {
 
-    
+    final createUpdateCallback = ref.watch(productsRepositoryProvider).createUpdateProduct;
 
     return ProductFormNotifier(
-      product: product
+      product: product,
+      onSubmitCallBack: createUpdateCallback
     );
   });
 
@@ -22,7 +24,7 @@ final productFormProvider = StateNotifierProvider.autoDispose.family<ProductForm
 
 class ProductFormNotifier extends StateNotifier<ProductFormState> {
 
-  final void Function(Map<String, dynamic> productLike)? onSubmitCallBack;
+  final Future<Product> Function (Map<String, dynamic> productLike)? onSubmitCallBack;
 
   ProductFormNotifier({
     this.onSubmitCallBack,
@@ -62,7 +64,13 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
       ).toList()
     };
 
-    return true;
+    try {
+    await onSubmitCallBack!(productLike);
+      return true;
+      
+    } catch (e) {
+      return false;
+    }
   }
 
   void _touchedEverything() {

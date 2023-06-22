@@ -22,7 +22,7 @@ class Price extends FormzInput<double, PriceError> {
     if ( isValid || isPure ) return null;
 
     if ( displayError == PriceError.empty ) return 'This field is required';
-    if ( displayError == PriceError.value ) return 'Has to be 0 or higher';
+    if ( displayError == PriceError.value ) return 'Has to be a number higher than 0';
 
 
     return null;

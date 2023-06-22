@@ -33,7 +33,11 @@ class ProductScreen extends ConsumerWidget {
       : _ProductView(product: productState.product!),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          if(productState.product == null) return;
+
+          ref.read(productFormProvider(productState.product!).notifier).onFormSubmit();
+        },
         child: const Icon(Icons.save_as_outlined),
       ),
 
@@ -95,30 +99,47 @@ class _ProductInformation extends ConsumerWidget {
         children: [
           const Text('General Information'),
           const SizedBox(height: 15 ),
+
           CustomProductField( 
             isTopField: true,
             label: 'name',
             initialValue: productForm.title.value,
             onChanged: (value) => ref.read(productFormProvider(product).notifier).onTitleChanged(value),
+            errorMessage: productForm.title.errorMessage,
           ),
+
           CustomProductField( 
             label: 'Slug',
-            initialValue: product.slug,
+            initialValue: productForm.slug.value,
+            onChanged: (value) => ref.read(productFormProvider(product).notifier).onSlugChanged(value),
+            errorMessage: productForm.slug.errorMessage,
           ),
+
           CustomProductField( 
             isBottomField: true,
             label: 'Price',
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            initialValue: product.price.toString(),
+            initialValue: productForm.price.value.toString(),
+            onChanged: (value) => ref.read(productFormProvider(product).notifier)
+              .onPriceChanged(double.tryParse(value) ?? 0),
+            errorMessage: productForm.price.errorMessage,
           ),
 
           const SizedBox(height: 20 ),
           const Text('Extra'),
           const SizedBox(height: 13),
 
-          _SizeSelector(selectedSizes: product.sizes ),
+          _SizeSelector(
+            selectedSizes: productForm.size,
+            onSizesChanged: ref.read(productFormProvider(product).notifier).onSizedChanged, 
+          ),
+
           const SizedBox(height: 10 ),
-          _GenderSelector( selectedGender: product.gender ),
+
+          _GenderSelector(
+            selectedGender: productForm.gender,
+            onGenderChanged: ref.read(productFormProvider(product).notifier).onGenderChanged, 
+          ),
           
 
           const SizedBox(height: 30 ),
@@ -126,7 +147,10 @@ class _ProductInformation extends ConsumerWidget {
             isTopField: true,
             label: 'Stock',
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            initialValue: product.stock.toString(),
+            initialValue: productForm.inStock.value.toString(),
+            onChanged: (value) => ref.read(productFormProvider(product).notifier)
+              .onStockChanged(int.tryParse(value) ?? -1),
+            errorMessage: productForm.inStock.errorMessage,
           ),
 
           CustomProductField( 
@@ -134,6 +158,7 @@ class _ProductInformation extends ConsumerWidget {
             label: 'Description',
             keyboardType: TextInputType.multiline,
             initialValue: product.description,
+            onChanged: ref.read(productFormProvider(product).notifier).onDescriptionChanged,
           ),
 
           CustomProductField( 
@@ -142,6 +167,7 @@ class _ProductInformation extends ConsumerWidget {
             label: 'Tags (Separated by ",")',
             keyboardType: TextInputType.multiline,
             initialValue: product.tags.join(', '),
+            onChanged: ref.read(productFormProvider(product).notifier).onTagsChanged,
           ),
 
 
@@ -157,7 +183,13 @@ class _SizeSelector extends StatelessWidget {
   final List<String> selectedSizes;
   final List<String> sizes = const['XS','S','M','L','XL','XXL','XXXL'];
 
-  const _SizeSelector({required this.selectedSizes});
+  final void Function(List<String> selectedGender) onSizesChanged;
+  
+
+  const _SizeSelector({
+    required this.selectedSizes, 
+    required this.onSizesChanged
+  });
 
 
   @override
@@ -173,7 +205,7 @@ class _SizeSelector extends StatelessWidget {
       }).toList(), 
       selected: Set.from( selectedSizes ),
       onSelectionChanged: (newSelection) {
-        print(newSelection);
+        onSizesChanged(List.from(newSelection));
       },
       multiSelectionEnabled: true,
     );
@@ -189,7 +221,12 @@ class _GenderSelector extends StatelessWidget {
     Icons.boy,
   ];
 
-  const _GenderSelector({required this.selectedGender});
+  final void Function(String selectedGender) onGenderChanged;
+
+  const _GenderSelector({
+    required this.selectedGender, 
+    required this.onGenderChanged
+  });
 
 
   @override
@@ -208,7 +245,7 @@ class _GenderSelector extends StatelessWidget {
         }).toList(), 
         selected: { selectedGender },
         onSelectionChanged: (newSelection) {
-          print(newSelection);
+          onGenderChanged(newSelection.first);
         },
       ),
     );
