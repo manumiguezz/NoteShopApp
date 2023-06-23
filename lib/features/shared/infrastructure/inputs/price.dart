@@ -6,10 +6,6 @@ enum PriceError { empty, value }
 // Extend FormzInput and provide the input type and error type.
 class Price extends FormzInput<double, PriceError> {
 
-  static final RegExp emailRegExp = RegExp(
-    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-  );
-
   // Call super.pure to represent an unmodified form input.
   const Price.pure() : super.pure(0.0);
 
