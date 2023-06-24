@@ -320,7 +320,7 @@ class _ImageGallery extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 11),
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             child: FadeInImage(
