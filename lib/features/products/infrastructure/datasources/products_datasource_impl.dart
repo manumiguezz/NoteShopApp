@@ -41,7 +41,6 @@ class ProductsDatasourceImpl extends ProductsDatasource {
 
   @override
   Future<List<Product>> searchProductByTerm(String term) {
-    // TODO: implement searchProductByTerm
     throw UnimplementedError();
   }
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.manuelmiguez.flickframes">
+    package="com.manuelmiguezlauria.noteshop">
    <application
         android:label="teslo_shop"
         android:name="${applicationName}"
