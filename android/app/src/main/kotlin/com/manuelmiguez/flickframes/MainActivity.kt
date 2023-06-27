@@ -1,4 +1,4 @@
-package com.example.teslo_shop
+package com.manuelmiguez.flickframes
 
 import io.flutter.embedding.android.FlutterActivity
 

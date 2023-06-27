@@ -45,12 +45,12 @@ class SideMenuState extends ConsumerState<SideMenu> {
 
         Padding(
           padding: EdgeInsets.fromLTRB(20, hasNotch ? 0 : 20, 16, 0),
-          child: Text('default', style: textStyles.titleMedium ),
+          child: Text('NoteShop', style: textStyles.titleMedium ),
         ),
 
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 16, 10),
-          child: Text('default', style: textStyles.titleSmall ),
+          child: Text('Welcome!', style: textStyles.titleSmall ),
         ),
 
         const NavigationDrawerDestination(
