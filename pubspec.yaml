@@ -39,7 +39,8 @@ flutter_launcher_icons:
 
 flutter_native_splash:
   color: "#282828"
-  image: "assets/icon/logo_inverted.png"
+  image: assets/icon/logo_inverted.png
+  branding: assets/dart.png
   android: true
   ios: true
 
