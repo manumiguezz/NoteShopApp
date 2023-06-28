@@ -1,6 +1,6 @@
 
 
-import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:noteshop/features/products/domain/domain.dart';
 
 class ProductsRepositoryImpl extends ProductsRepository {
 

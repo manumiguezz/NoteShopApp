@@ -1,6 +1,6 @@
 
 
-import 'package:teslo_shop/features/auth/domain/domain.dart';
+import 'package:noteshop/features/auth/domain/domain.dart';
 
 class UserMapper {
 

@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:teslo_shop/features/shared/infrastructure/inputs/inputs.dart';
+import 'package:noteshop/features/shared/infrastructure/inputs/inputs.dart';
 
 // Define input validation errors
 enum ConfirmedpasswordError { empty, length, format }

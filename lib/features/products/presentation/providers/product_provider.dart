@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
-import 'package:teslo_shop/features/products/presentation/providers/product_respository_provider.dart';
+import 'package:noteshop/features/products/domain/domain.dart';
+import 'package:noteshop/features/products/presentation/providers/product_respository_provider.dart';
 
 final productProvider = StateNotifierProvider.autoDispose
     .family<ProductNotifier, ProductState, String>((ref, productId) {

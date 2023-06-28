@@ -1,8 +1,8 @@
 
 
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/infrastructure/mappers/user_mapper.dart';
-import 'package:teslo_shop/features/products/domain/entities/product.dart';
+import 'package:noteshop/config/config.dart';
+import 'package:noteshop/features/auth/infrastructure/mappers/user_mapper.dart';
+import 'package:noteshop/features/products/domain/entities/product.dart';
 
 class ProductMapper {
 

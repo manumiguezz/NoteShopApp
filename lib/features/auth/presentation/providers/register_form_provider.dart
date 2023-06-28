@@ -1,6 +1,6 @@
 
 
-import 'package:teslo_shop/features/shared/infrastructure/inputs/inputs.dart';
+import 'package:noteshop/features/shared/infrastructure/inputs/inputs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
 

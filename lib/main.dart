@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:teslo_shop/config/config.dart';
+import 'package:noteshop/config/config.dart';
 
 void main() async {
 

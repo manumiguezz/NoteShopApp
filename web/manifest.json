@@ -1,6 +1,6 @@
 {
-    "name": "teslo_shop",
-    "short_name": "teslo_shop",
+    "name": "noteshop",
+    "short_name": "noteshop",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

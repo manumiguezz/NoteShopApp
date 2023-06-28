@@ -1,11 +1,11 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:teslo_shop/features/auth/domain/domain.dart';
-import 'package:teslo_shop/features/auth/domain/repositories/auth_repository.dart';
-import 'package:teslo_shop/features/auth/infrastructure/errors/auth_errors.dart';
-import 'package:teslo_shop/features/auth/infrastructure/repositories/auth_repository_impl.dart';
-import 'package:teslo_shop/features/shared/infrastructure/services/key_value_sotrage_impl.dart';
-import 'package:teslo_shop/features/shared/infrastructure/services/key_value_storage.dart';
+import 'package:noteshop/features/auth/domain/domain.dart';
+import 'package:noteshop/features/auth/domain/repositories/auth_repository.dart';
+import 'package:noteshop/features/auth/infrastructure/errors/auth_errors.dart';
+import 'package:noteshop/features/auth/infrastructure/repositories/auth_repository_impl.dart';
+import 'package:noteshop/features/shared/infrastructure/services/key_value_sotrage_impl.dart';
+import 'package:noteshop/features/shared/infrastructure/services/key_value_storage.dart';
 
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {

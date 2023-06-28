@@ -1,4 +1,4 @@
-name: teslo_shop
+name: noteshop
 description: A new Flutter project.
 publish_to: 'none'
 version: 0.1.0
@@ -35,12 +35,12 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/icon/icon_two.png"
   min_sdk_android: 21
+  adaptive_icon_background: "#f7f7f7"
 
 
 flutter_native_splash:
   color: "#282828"
   image: assets/icon/logo_inverted.png
-  branding: assets/dart.png
   android: true
   ios: true
 

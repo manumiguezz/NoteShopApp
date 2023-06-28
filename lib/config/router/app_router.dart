@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:teslo_shop/config/router/app_router_notifier.dart';
-import 'package:teslo_shop/features/auth/auth.dart';
-import 'package:teslo_shop/features/auth/presentation/providers/auth_provider.dart';
-import 'package:teslo_shop/features/products/presentation/screens/product_screen.dart';
-import 'package:teslo_shop/features/products/products.dart';
+import 'package:noteshop/config/router/app_router_notifier.dart';
+import 'package:noteshop/features/auth/auth.dart';
+import 'package:noteshop/features/auth/presentation/providers/auth_provider.dart';
+import 'package:noteshop/features/products/presentation/screens/product_screen.dart';
+import 'package:noteshop/features/products/products.dart';
 
 final goRouterProvider = Provider((ref) {
 

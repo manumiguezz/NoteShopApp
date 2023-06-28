@@ -1,7 +1,7 @@
 
 
 import 'package:image_picker/image_picker.dart';
-import 'package:teslo_shop/features/shared/infrastructure/services/camera_gallery_service.dart';
+import 'package:noteshop/features/shared/infrastructure/services/camera_gallery_service.dart';
 
 class CameraGalleryServiceImpl extends CameraGalleryService {
 

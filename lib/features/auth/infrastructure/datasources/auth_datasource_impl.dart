@@ -1,10 +1,10 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/domain/domain.dart';
-import 'package:teslo_shop/features/auth/infrastructure/errors/auth_errors.dart';
-import 'package:teslo_shop/features/auth/infrastructure/mappers/user_mapper.dart';
+import 'package:noteshop/config/config.dart';
+import 'package:noteshop/features/auth/domain/domain.dart';
+import 'package:noteshop/features/auth/infrastructure/errors/auth_errors.dart';
+import 'package:noteshop/features/auth/infrastructure/mappers/user_mapper.dart';
 
 class AuthDataSourceImpl extends AuthDataSource {
 

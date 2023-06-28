@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.manuelmiguezlauria.noteshop">
    <application
-        android:label="teslo_shop"
+        android:label="noteshop"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

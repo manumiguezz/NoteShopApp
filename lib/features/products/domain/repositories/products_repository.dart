@@ -1,5 +1,5 @@
 
-import 'package:teslo_shop/features/products/domain/entities/product.dart';
+import 'package:noteshop/features/products/domain/entities/product.dart';
 
 abstract class ProductsRepository {
 

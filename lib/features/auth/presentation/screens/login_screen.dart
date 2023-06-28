@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:teslo_shop/features/auth/presentation/providers/auth_provider.dart';
-import 'package:teslo_shop/features/auth/presentation/providers/login_form_provider.dart';
-import 'package:teslo_shop/features/shared/shared.dart';
+import 'package:noteshop/features/auth/presentation/providers/auth_provider.dart';
+import 'package:noteshop/features/auth/presentation/providers/login_form_provider.dart';
+import 'package:noteshop/features/shared/shared.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -24,17 +24,17 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox( height: 80 ),
-                // Icon Banner
-                const Icon( 
-                  Icons.production_quantity_limits_rounded, 
-                  color: Colors.white,
-                  size: 100,
+                const SizedBox( height: 60 ),
+                
+                Image.asset(
+                  'assets/icon/logo_inverted.png',
+                  scale: 6.5,
                 ),
-                const SizedBox( height: 80 ),
+
+                const SizedBox( height: 40 ),
     
                 Container(
-                  height: size.height - 260, // 80 los dos sizebox y 100 el ícono
+                  height: size.height - 260, 
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: scaffoldBackgroundColor,

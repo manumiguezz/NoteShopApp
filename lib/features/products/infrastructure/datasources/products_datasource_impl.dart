@@ -2,10 +2,10 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
-import 'package:teslo_shop/features/products/infrastructure/errors/product_errors.dart';
-import 'package:teslo_shop/features/products/infrastructure/mappers/product_mapper.dart';
+import 'package:noteshop/config/config.dart';
+import 'package:noteshop/features/products/domain/domain.dart';
+import 'package:noteshop/features/products/infrastructure/errors/product_errors.dart';
+import 'package:noteshop/features/products/infrastructure/mappers/product_mapper.dart';
 
 
 

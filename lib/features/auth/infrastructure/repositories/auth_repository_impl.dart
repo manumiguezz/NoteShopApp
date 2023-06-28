@@ -1,9 +1,9 @@
  
 
-import 'package:teslo_shop/features/auth/domain/datasources/auth_datasources.dart';
-import 'package:teslo_shop/features/auth/domain/entities/user.dart';
-import 'package:teslo_shop/features/auth/domain/repositories/auth_repository.dart';
-import 'package:teslo_shop/features/auth/infrastructure/datasources/auth_datasource_impl.dart';
+import 'package:noteshop/features/auth/domain/datasources/auth_datasources.dart';
+import 'package:noteshop/features/auth/domain/entities/user.dart';
+import 'package:noteshop/features/auth/domain/repositories/auth_repository.dart';
+import 'package:noteshop/features/auth/infrastructure/datasources/auth_datasource_impl.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
 
