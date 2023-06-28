@@ -40,6 +40,8 @@ flutter_launcher_icons:
 flutter_native_splash:
   color: "#282828"
   background_image: "assets/icon/icon.png"
+  android: true
+  ios: true
 
 flutter:
   uses-material-design: true
