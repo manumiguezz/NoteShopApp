@@ -33,13 +33,13 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/logo_inverted.png"
+  image_path: "assets/icon/icon_two.png"
   min_sdk_android: 21
 
 
 flutter_native_splash:
   color: "#282828"
-  image: "assets/icon/icon.png"
+  image: "assets/icon/logo_inverted.png"
   android: true
   ios: true
 
