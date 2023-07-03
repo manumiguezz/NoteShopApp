@@ -1,5 +1,5 @@
 name: noteshop
-description: A new Flutter project.
+description: Noteshop is a Dart/Flutter app designed to enhance your shopping experience. Integrated with the Teslo Shop backend, this app leverages Riverpod, Go Router, and CRUD REST API endpoints to provide a seamless shopping journey. With Noteshop, you can effortlessly browse and purchase products while enjoying the ability to add notes to your products.
 publish_to: 'none'
 version: 0.1.0
 
@@ -22,6 +22,8 @@ dependencies:
   image_picker: ^1.0.0
   path_provider: ^2.0.15
   shared_preferences: ^2.1.2
+  cupertino_icons: ^1.0.2
+  material_design_icons_flutter: ^6.1.0
 
 dev_dependencies:
   change_app_package_name: ^1.1.0
@@ -46,6 +48,12 @@ flutter_native_splash:
 
 flutter:
   uses-material-design: true
+
+flutter:
+  fonts:
+    - family: MaterialIcons
+      fonts:
+        - asset: packages/material_design_icons_flutter/fonts/MaterialIcons-Regular.otf
 
   assets:
     - .env
