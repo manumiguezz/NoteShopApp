@@ -1,6 +1,6 @@
-# Flutter 
+# Flutter (NOTESHOP)
 
-Este es un proyecto para trabajar con:
+Este es un proyecto que trabajar con:
 
 * Cámara
 * Tokens de acceso
